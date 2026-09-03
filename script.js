@@ -1,49 +1,14 @@
-const text = document.getElementById('text');
-const size = document.getElementById('size');
-const color = document.getElementById('color');
-const box = document.getElementById('qrcode');
-const empty = document.getElementById('empty');
-const download = document.getElementById('download');
-const copy = document.getElementById('copy');
-let lastCanvas = null;
-
-function generate() {
-  const value = text.value.trim();
-  if (!value) { text.focus(); return; }
-  box.innerHTML = '';
-  new QRCode(box, {
-    text: value,
-    width: Number(size.value),
-    height: Number(size.value),
-    colorDark: color.value,
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
-  empty.style.display = 'none';
-  download.disabled = false;
-  copy.disabled = false;
-  setTimeout(() => { lastCanvas = box.querySelector('canvas'); }, 80);
-}
-
-document.getElementById('generate').addEventListener('click', generate);
-text.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') generate(); });
-size.addEventListener('change', generate);
-color.addEventListener('input', generate);
-
-download.addEventListener('click', () => {
-  if (!lastCanvas) lastCanvas = box.querySelector('canvas');
-  if (!lastCanvas) return;
-  const a = document.createElement('a');
-  a.download = 'qr2tree-qr.png';
-  a.href = lastCanvas.toDataURL('image/png');
-  a.click();
-});
-
-copy.addEventListener('click', async () => {
-  await navigator.clipboard.writeText(text.value.trim());
-  const old = copy.textContent;
-  copy.textContent = 'Copied ✓';
-  setTimeout(() => copy.textContent = old, 1200);
-});
-
-generate();
+const text=document.getElementById('text'),size=document.getElementById('size'),color=document.getElementById('color'),box=document.getElementById('qrcode'),empty=document.getElementById('empty'),logo=document.getElementById('logo'),fileName=document.getElementById('fileName'),styleSelect=document.getElementById('style');
+const png=document.getElementById('downloadPng'),svg=document.getElementById('downloadSvg'),copy=document.getElementById('copy');let canvas=null,logoData=null;
+logo.addEventListener('change',()=>{const f=logo.files?.[0];if(!f)return;fileName.textContent=f.name;const r=new FileReader();r.onload=()=>{logoData=r.result;generate()};r.readAsDataURL(f)});
+function generate(){const value=text.value.trim();if(!value){text.focus();return}box.innerHTML='';new QRCode(box,{text:value,width:+size.value,height:+size.value,colorDark:color.value,colorLight:'#fff',correctLevel:QRCode.CorrectLevel.H});empty.style.display='none';setTimeout(()=>{canvas=box.querySelector('canvas');if(logoData&&canvas)drawLogo();png.disabled=!canvas;svg.disabled=!canvas;copy.disabled=false},100)}
+function drawLogo(){const c=box.querySelector('canvas');if(!c||!logoData)return;const ctx=c.getContext('2d'),img=new Image();img.onload=()=>{const s=Math.floor(c.width*.18),x=(c.width-s)/2,y=(c.height-s)/2;ctx.fillStyle='#fff';roundRect(ctx,x-7,y-7,s+14,s+14,10);ctx.drawImage(img,x,y,s,s);canvas=c};img.src=logoData}
+function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();ctx.fill()}
+png.addEventListener('click',()=>{if(!canvas)return;const a=document.createElement('a');a.download='qr2tree.png';a.href=canvas.toDataURL('image/png');a.click()});
+svg.addEventListener('click',()=>{if(!canvas)return;const data=canvas.toDataURL('image/png');const s=canvas.width;const source=`<svg xmlns="http://www.w3.org/2000/svg" width="${s}" height="${s}" viewBox="0 0 ${s} ${s}"><image href="${data}" width="${s}" height="${s}"/></svg>`;const blob=new Blob([source],{type:'image/svg+xml'}),a=document.createElement('a');a.download='qr2tree.svg';a.href=URL.createObjectURL(blob);a.click();URL.revokeObjectURL(a.href)});
+copy.addEventListener('click',async()=>{await navigator.clipboard.writeText(text.value.trim());const old=copy.textContent;copy.textContent='Copied ✓';setTimeout(()=>copy.textContent=old,1200)});
+size.addEventListener('change',generate);color.addEventListener('input',generate);styleSelect.addEventListener('change',()=>document.body.dataset.style=styleSelect.value);document.getElementById('generate').addEventListener('click',generate);text.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')generate()});
+const translations={ar:{title:'ازرع رمز QR الخاص بك',desc:'حوّل أي رابط أو نص إلى رمز QR جميل مستوحى من الشجرة.',grow:'أنشئ شجرة QR'},fr:{title:'Faites pousser votre QR',desc:'Transformez un lien ou un texte en QR artistique inspiré de la nature.',grow:'Créer mon QR'},es:{title:'Haz crecer tu código QR',desc:'Convierte cualquier enlace o texto en un QR artístico inspirado en un árbol.',grow:'Crear mi QR'}};
+let arabic=false;document.getElementById('lang').addEventListener('click',()=>{arabic=!arabic;document.documentElement.lang=arabic?'ar':'en';document.body.dir=arabic?'rtl':'ltr';document.querySelector('.hero h1').innerHTML=arabic?'ازرع رمز QR<br><em>على شكل شجرة جميلة.</em>':'Grow your QR code<br><em>into a beautiful tree.</em>';document.querySelector('.hero p').textContent=arabic?'حوّل أي رابط أو نص إلى رمز QR مخصص مع تجربة شجرة ثلاثية الأبعاد هادئة مستوحاة من الطبيعة.':'Turn any URL, text or image into a custom QR code with a calm, nature-inspired 3D tree experience.';document.querySelector('.cta').innerHTML=arabic?'أنشئ شجرة QR <span>←</span>':'Create a QR tree <span>→</span>'});
+let audioCtx,master,windOsc,windGain;function startAmbient(){if(audioCtx){audioCtx.resume();return}audioCtx=new (window.AudioContext||window.webkitAudioContext)();master=audioCtx.createGain();master.gain.value=.035;master.connect(audioCtx.destination);windOsc=audioCtx.createOscillator();windGain=audioCtx.createGain();windOsc.type='sine';windOsc.frequency.value=90;windGain.gain.value=.025;windOsc.connect(windGain).connect(master);windOsc.start();[261.63,329.63,392,523.25].forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.value=.008;g.gain.setTargetAtTime(0.001,audioCtx.currentTime+1+i*1.2,1.8);o.connect(g).connect(master);o.start();o.stop(audioCtx.currentTime+8+i)});}
+document.getElementById('sound').addEventListener('click',()=>{const b=document.getElementById('sound');if(!audioCtx||audioCtx.state==='suspended'){startAmbient();b.textContent='♫ Ambient sound: on';b.setAttribute('aria-pressed','true')}else{audioCtx.suspend();b.textContent='♫ Ambient sound: off';b.setAttribute('aria-pressed','false')}});generate();
