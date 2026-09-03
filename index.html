@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qr2Tree — create beautiful QR codes with a magical 3D tree experience." />
+  <title>Qr2Tree — Magic QR Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <header class="nav"><a class="brand" href="#">Qr<span>2</span>Tree</a><a class="github" href="https://github.com/xaouki/Qr2Tree" target="_blank" rel="noreferrer">GitHub ↗</a></header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">✦ NEXT-GEN QR CREATOR</div>
+        <h1>Turn a link into a<br><span>living QR tree.</span></h1>
+        <p>Create a beautiful QR code and watch it grow into a magical 3D tree. Fast, private, and free — directly in your browser.</p>
+        <a class="cta" href="#creator">Create my QR <b>→</b></a>
+      </div>
+      <div class="tree-stage" aria-label="3D QR tree preview">
+        <div class="tree-shadow"></div><div class="trunk"></div>
+        <div class="branch b1"></div><div class="branch b2"></div><div class="branch b3"></div>
+        <div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div><div class="leaf l4"></div><div class="leaf l5"></div><div class="leaf l6"></div>
+        <div class="qr-orb" id="heroQr"><div class="qr-mini"></div></div>
+      </div>
+    </section>
+
+    <section id="creator" class="creator">
+      <div class="section-head"><div><div class="eyebrow">QR GENERATOR</div><h2>Plant your QR.</h2></div><span class="privacy">● 100% browser-based</span></div>
+      <div class="panel">
+        <div class="form">
+          <label for="text">Your link or text</label>
+          <textarea id="text" rows="4" placeholder="https://example.com">https://example.com</textarea>
+          <div class="row"><label class="small-label">Size <select id="size"><option value="180">180px</option><option value="240" selected>240px</option><option value="320">320px</option></select></label><label class="small-label">Color <input id="color" type="color" value="#111111"></label></div>
+          <button id="generate" class="generate">Generate QR <span>✦</span></button>
+        </div>
+        <div class="preview"><div id="qrcode"></div><div id="empty">Your QR will grow here.</div><div class="preview-actions"><button id="download" disabled>Download PNG</button><button id="copy" disabled>Copy content</button></div></div>
+      </div>
+    </section>
+  </main>
+  <footer>Qr2Tree · Create something worth scanning.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
