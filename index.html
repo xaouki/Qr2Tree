@@ -1,49 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Qr2Tree — create beautiful QR codes with a magical 3D tree experience." />
-  <title>Qr2Tree — Magic QR Generator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qr2Tree — Free 3D QR Code Generator | Turn Links & Images Into QR Trees</title>
+<meta name="description" content="Qr2Tree is a free QR code generator that turns links, text and images into beautiful tree-inspired 3D QR art. Create, customize and download scannable QR codes online.">
+<meta name="keywords" content="QR code generator, free QR generator, QR code maker, 3D QR code, QR tree, QR tree generator, QR art, QR image, image to QR, link to QR, URL to QR, QR logo, custom QR code, artistic QR code, scannable QR, QR code download, QR code PNG, QR code SVG, مولد QR, رمز QR, générateur QR, generador QR, QR Code Generator">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://xaouki.github.io/Qr2Tree/">
+<meta property="og:type" content="website"><meta property="og:title" content="Qr2Tree — Free 3D QR Tree Generator"><meta property="og:description" content="Turn a link, text or image into beautiful QR tree art. Free, private and browser-based."><meta property="og:url" content="https://xaouki.github.io/Qr2Tree/">
+<meta name="theme-color" content="#dfe9df">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Qr2Tree","url":"https://xaouki.github.io/Qr2Tree/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Free browser-based QR code generator with artistic 3D tree styling.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["QR code generation","Image logo support","PNG download","SVG download","3D tree visual"]}</script>
 </head>
 <body>
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>
-  <header class="nav"><a class="brand" href="#">Qr<span>2</span>Tree</a><a class="github" href="https://github.com/xaouki/Qr2Tree" target="_blank" rel="noreferrer">GitHub ↗</a></header>
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">✦ NEXT-GEN QR CREATOR</div>
-        <h1>Turn a link into a<br><span>living QR tree.</span></h1>
-        <p>Create a beautiful QR code and watch it grow into a magical 3D tree. Fast, private, and free — directly in your browser.</p>
-        <a class="cta" href="#creator">Create my QR <b>→</b></a>
-      </div>
-      <div class="tree-stage" aria-label="3D QR tree preview">
-        <div class="tree-shadow"></div><div class="trunk"></div>
-        <div class="branch b1"></div><div class="branch b2"></div><div class="branch b3"></div>
-        <div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div><div class="leaf l4"></div><div class="leaf l5"></div><div class="leaf l6"></div>
-        <div class="qr-orb" id="heroQr"><div class="qr-mini"></div></div>
-      </div>
-    </section>
-
-    <section id="creator" class="creator">
-      <div class="section-head"><div><div class="eyebrow">QR GENERATOR</div><h2>Plant your QR.</h2></div><span class="privacy">● 100% browser-based</span></div>
-      <div class="panel">
-        <div class="form">
-          <label for="text">Your link or text</label>
-          <textarea id="text" rows="4" placeholder="https://example.com">https://example.com</textarea>
-          <div class="row"><label class="small-label">Size <select id="size"><option value="180">180px</option><option value="240" selected>240px</option><option value="320">320px</option></select></label><label class="small-label">Color <input id="color" type="color" value="#111111"></label></div>
-          <button id="generate" class="generate">Generate QR <span>✦</span></button>
-        </div>
-        <div class="preview"><div id="qrcode"></div><div id="empty">Your QR will grow here.</div><div class="preview-actions"><button id="download" disabled>Download PNG</button><button id="copy" disabled>Copy content</button></div></div>
-      </div>
-    </section>
-  </main>
-  <footer>Qr2Tree · Create something worth scanning.</footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<div class="ambient"></div>
+<header class="nav"><a class="brand" href="#top" aria-label="Qr2Tree home">Qr<span>2</span>Tree</a><nav><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav><button id="lang" class="pill" type="button">EN / العربية</button></header>
+<main id="top">
+<section class="hero">
+<div class="hero-copy"><div class="eyebrow">✦ FREE · PRIVATE · BROWSER-BASED</div><h1>Grow your QR code<br><em>into a beautiful tree.</em></h1><p>Turn any URL, text or image into a custom QR code with a calm, nature-inspired 3D tree experience. Your content stays in your browser.</p><a class="cta" href="#creator">Create a QR tree <span>→</span></a><div class="trust"><span>✓ No sign-up</span><span>✓ No upload to server</span><span>✓ Free download</span></div></div>
+<div class="tree-scene" aria-label="Animated 3D QR tree"><div class="moon"></div><div class="ground"></div><div class="tree"><i class="trunk"></i><i class="branch br1"></i><i class="branch br2"></i><i class="branch br3"></i><i class="branch br4"></i><i class="leaf lf1"></i><i class="leaf lf2"></i><i class="leaf lf3"></i><i class="leaf lf4"></i><i class="leaf lf5"></i><i class="leaf lf6"></i><div class="qr-heart">QR</div></div></div>
+</section>
+<section id="creator" class="creator"><div class="section-title"><div><div class="eyebrow">QR TREE GENERATOR</div><h2>Plant your code</h2><p>Paste a link, write text, or add an image logo.</p></div><button id="sound" class="sound" type="button" aria-pressed="false">♫ Ambient sound: off</button></div>
+<div class="generator"><div class="controls"><label>Link or text<textarea id="text" rows="4" placeholder="https://example.com">https://example.com</textarea></label><label class="upload">Add an image logo <input id="logo" type="file" accept="image/png,image/jpeg,image/webp"><span id="fileName">Optional PNG, JPG or WebP</span></label><div class="grid"><label>Size<select id="size"><option value="240">240 px</option><option value="320" selected>320 px</option><option value="500">500 px</option></select></label><label>QR color<input id="color" type="color" value="#244536"></label><label>Tree style<select id="style"><option value="forest">Forest</option><option value="sage">Sage</option><option value="night">Night garden</option></select></label></div><button id="generate" class="generate">Grow my QR tree <span>✦</span></button><p class="privacy-note">Your image and text are processed locally in your browser. They are not sent to Qr2Tree.</p></div>
+<div class="result"><div class="tree-preview"><div class="preview-tree"><div class="p-crown"></div><div class="p-trunk"></div><div class="p-branch pb1"></div><div class="p-branch pb2"></div><div class="p-branch pb3"></div><div class="p-branch pb4"></div><div class="p-leaf pl1"></div><div class="p-leaf pl2"></div><div class="p-leaf pl3"></div><div class="p-leaf pl4"></div><div class="p-leaf pl5"></div><div class="p-leaf pl6"></div><div id="qrcode"></div></div></div><div id="empty">Your QR tree will appear here.</div><div class="actions"><button id="downloadPng" disabled>Download PNG</button><button id="downloadSvg" disabled>Download SVG</button><button id="copy" disabled>Copy text</button></div></div></div></section>
+<section id="how" class="info"><div><div class="eyebrow">HOW IT WORKS</div><h2>From idea to QR tree in seconds.</h2></div><div class="steps"><article><b>01</b><h3>Add content</h3><p>Enter a URL or any text. You can also choose an image to use as a QR logo.</p></article><article><b>02</b><h3>Grow it</h3><p>Choose your style and generate a high-error-correction QR designed for reliable scanning.</p></article><article><b>03</b><h3>Download</h3><p>Save your QR as a PNG or scalable SVG and use it on print, social media or your website.</p></article></div></section>
+<section class="seo-copy"><h2>Free QR code generator with a tree-inspired 3D style</h2><p>Qr2Tree combines a standard scannable QR code with a beautiful nature-inspired presentation. Use it as a <strong>QR code generator</strong>, <strong>3D QR generator</strong>, <strong>QR tree generator</strong>, <strong>image to QR converter</strong>, or <strong>URL to QR converter</strong>. The generator works on phones, tablets and computers without an account.</p><p>Looking for a custom QR code, QR art, QR logo, branded QR code, artistic QR code or a free QR code maker? Qr2Tree gives you a simple starting point while keeping the actual QR data local to your browser.</p></section>
+<section id="faq" class="faq"><div class="eyebrow">FAQ</div><h2>Questions, answered.</h2><details open><summary>Is Qr2Tree free?</summary><p>Yes. The QR generator is free to use and downloads are generated in your browser.</p></details><details><summary>Can I turn an image into a QR code?</summary><p>Yes. You can encode an image URL or add a small image logo to the generated QR. A QR code encodes data; it does not literally turn the binary image into a QR without encoding that image data or URL.</p></details><details><summary>Will my QR code still scan?</summary><p>Qr2Tree uses a standard QR generator and high error correction. Always test your final downloaded design with several phones before printing or publishing it.</p></details><details><summary>Does Qr2Tree store my links or images?</summary><p>No server upload is required for generation. Your browser handles the entered content and selected logo locally.</p></details></section>
+</main>
+<footer id="contact"><div><strong>Qr2Tree</strong><p>Grow something worth scanning.</p></div><div><span>Contact</span><a href="https://www.instagram.com/xaouki/" target="_blank" rel="noopener">Instagram · @xaouki</a><a href="mailto:chaou99i@gmail.com">chaou99i@gmail.com</a></div><div><span>Legal</span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div><div class="copyright">© 2026 Qr2Tree. All rights reserved.</div></footer>
+<script src="script.js"></script>
+</body></html>
